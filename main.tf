@@ -1,5 +1,5 @@
 resource "aws_docdb_subnet_group" "default" {
-  name       = ${var.env}-docdb-subnet-groups"
+  name       = "${var.env}-docdb-subnet-groups"
   subnet_ids = var.subnet_ids
 
   tags = merge(
