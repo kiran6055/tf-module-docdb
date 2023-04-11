@@ -38,6 +38,8 @@ resource "aws_security_group" "docdb" {
 
 }
 
+# creating Docdb (mongoDB) cluster with user and password which is already stored in aws system stroage parameter store coded is given in ansible-roboshop aws-parameter.yml
+
 resource "aws_docdb_cluster" "docdb" {
   cluster_identifier      = "${var.env}-docdb-cluster"
   engine                  = "docdb"
@@ -53,4 +55,17 @@ resource "aws_docdb_cluster" "docdb" {
     { Name = "${var.env}-docdb-cluster" }
   )
 
+}
+
+# creating instances
+resource "aws_docdb_cluster_instance" "cluster_instances" {
+  count              = var.number_of_instances
+  identifier         = "${var.env}-docdb-cluster-instances-${count.index+1}"
+  cluster_identifier = aws_docdb_cluster.docdb.id
+  instance_class     = var.instance_class
+
+tags = merge(
+  local.common_tags,
+  { Name = "${var.env}-docdb-cluster-instances-${count.index+1}" }
+)
 }
