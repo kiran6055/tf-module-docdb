@@ -50,7 +50,7 @@ resource "aws_docdb_cluster" "docdb" {
   db_subnet_group_name    = aws_docdb_subnet_group.default.name
   vpc_security_group_ids  = [aws_security_group.docdb.id]
   storage_encrypted      = true
-  kms_key_id             = data.aws_kms_key.key.arn
+  #kms_key_id             = data.aws_kms_key.key.arn
 
 
   tags = merge(
@@ -67,7 +67,7 @@ resource "aws_docdb_cluster_instance" "cluster_instances" {
   cluster_identifier      = aws_docdb_cluster.docdb.id
   instance_class          = var.instance_class
   storage_encrypted      = true
-  kms_key_id             = data.aws_kms_key.key.arn
+  #kms_key_id             = data.aws_kms_key.key.arn
 
 
   tags = merge(
