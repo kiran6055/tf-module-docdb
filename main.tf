@@ -91,7 +91,8 @@ resource "aws_ssm_parameter" "docdb_url_user" {
 }
 
 # creating aws ssm parameter user for docdb for running and adding schemaload which is given in app main
-resource "aws_ssm_parameter" "docdb_url_user" {
+
+resource "aws_ssm_parameter" "docdb_url" {
   name  = "${var.env}.docdb.DOCDB_URL"
   type  = "String"
   value = aws_docdb_cluster.docdb.endpoint
