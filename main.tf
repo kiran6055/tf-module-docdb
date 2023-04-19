@@ -87,7 +87,7 @@ resource "aws_ssm_parameter" "docdb_url_catalogue" {
 resource "aws_ssm_parameter" "docdb_url_user" {
   name  = "${var.env}.user.DOCDB_URL"
   type  = "String"
-  value = "mongodb://${data.aws_ssm_parameter.DB_ADMIN_USER.value}:${data.aws_ssm_parameter.DB_ADMIN_PASS.value}@${aws_docdb_cluster.docdb.endpoint}:27017/user?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
+  value = "mongodb://${data.aws_ssm_parameter.DB_ADMIN_USER.value}:${data.aws_ssm_parameter.DB_ADMIN_PASS.value}@${aws_docdb_cluster.docdb.endpoint}:27017/users?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
 }
 
 # creating aws ssm parameter user for docdb for running and adding schemaload which is given in app main
