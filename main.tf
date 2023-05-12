@@ -98,6 +98,3 @@ resource "aws_ssm_parameter" "docdb_url" {
   value = aws_docdb_cluster.docdb.endpoint
 }
 
-output "default" {
-  value = aws_docdb_subnet_group.default
-}
